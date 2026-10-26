@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "lib": ["es2023", "dom", "dom.iterable"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "@portfolio/data": ["./libs/portfolio-data/src/index.ts"],
+      "@portfolio/ui": ["./libs/ui/src/index.ts"],
+      "@portfolio/layout": ["./libs/layout/src/index.ts"],
+      "@portfolio/sections": ["./libs/feature-sections/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

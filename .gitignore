@@ -1,0 +1,11 @@
+node_modules
+dist
+tmp
+out-tsc
+coverage
+.angular
+.nx/cache
+.nx/workspace-data
+.DS_Store
+*.log
+.qodo

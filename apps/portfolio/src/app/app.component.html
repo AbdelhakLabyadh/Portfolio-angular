@@ -1,0 +1,30 @@
+<a
+  href="#main"
+  class="sr-only z-50 rounded-full bg-accent px-4 py-2 font-semibold text-on-accent focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+>
+  Skip to content
+</a>
+
+<layout-header
+  [name]="portfolio.profile.name"
+  [initials]="portfolio.profile.initials"
+  [navItems]="navItems"
+  [activeId]="activeSection()"
+/>
+
+<main id="main" tabindex="-1" class="outline-none">
+  <section-hero [profile]="portfolio.profile" [contacts]="portfolio.contacts" />
+  <section-about [copy]="sections.about" [profile]="portfolio.profile" />
+  <section-skills [copy]="sections.skills" [groups]="portfolio.skills" />
+  <section-experience [copy]="sections.experience" [items]="featuredExperience" />
+  <section-other-experience [copy]="sections['other-experience']" [items]="otherExperience" />
+  <section-education [copy]="sections.education" [items]="portfolio.education" />
+  <section-certifications
+    [copy]="sections.certifications"
+    [certifications]="portfolio.certifications"
+    [languages]="portfolio.languages"
+  />
+  <section-contact [copy]="sections.contact" [profile]="portfolio.profile" [contacts]="portfolio.contacts" />
+</main>
+
+<layout-footer [name]="portfolio.profile.name" [contacts]="portfolio.contacts" />
