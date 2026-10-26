@@ -28,8 +28,8 @@ export const portfolio: Portfolio = {
     {
       kind: 'mail',
       label: 'Email',
-      value: 'Abdelhak.labyadh@outlook.com',
-      href: 'mailto:Abdelhak.labyadh@outlook.com',
+      value: 'abdelhak.labyadh@outlook.com',
+      href: 'mailto:abdelhak.labyadh@outlook.com',
     },
     { kind: 'phone', label: 'Phone', value: '+351 910 686 127', href: 'tel:+351910686127' },
     {
