@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { Certification, SectionCopy } from '@portfolio/data';
+import { Component, inject, input } from '@angular/core';
+import { Certification, SectionCopy, UI_COPY } from '@portfolio/data';
 import { CardComponent, IconComponent, SectionComponent, TagListComponent } from '@portfolio/ui';
 
 @Component({
@@ -17,7 +17,7 @@ import { CardComponent, IconComponent, SectionComponent, TagListComponent } from
         <ui-card>
           <h3 class="flex items-center gap-2 font-semibold text-fg">
             <ui-icon name="award" class="text-accent" />
-            Certificates & training
+            {{ ui.certificatesAndTraining }}
           </h3>
           <ul class="mt-4 divide-y divide-line">
             @for (certification of certifications(); track certification.name) {
@@ -31,9 +31,9 @@ import { CardComponent, IconComponent, SectionComponent, TagListComponent } from
         <ui-card>
           <h3 class="flex items-center gap-2 font-semibold text-fg">
             <ui-icon name="globe" class="text-accent" />
-            Languages
+            {{ ui.languages }}
           </h3>
-          <ui-tag-list class="mt-4" label="Languages" [tags]="languages()" />
+          <ui-tag-list class="mt-4" [label]="ui.languages" [tags]="languages()" />
         </ui-card>
       </div>
     </ui-section>
@@ -43,4 +43,6 @@ export class CertificationsComponent {
   public readonly copy = input.required<SectionCopy>();
   public readonly certifications = input.required<readonly Certification[]>();
   public readonly languages = input.required<readonly string[]>();
+
+  protected readonly ui = inject(UI_COPY);
 }

@@ -1,10 +1,12 @@
 import { Component, computed, input, output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NavItem } from '@portfolio/data';
 
 export type NavOrientation = 'horizontal' | 'vertical';
 
 @Component({
   selector: 'layout-nav',
+  imports: [RouterLink],
   host: { class: 'block' },
   template: `
     <nav [attr.aria-label]="label()">
@@ -12,7 +14,8 @@ export type NavOrientation = 'horizontal' | 'vertical';
         @for (item of items(); track item.id) {
           <li>
             <a
-              [href]="'#' + item.id"
+              routerLink="."
+              [fragment]="item.id"
               [attr.aria-current]="item.id === activeId() ? 'location' : null"
               [class]="linkClasses()"
               [class.text-accent]="item.id === activeId()"

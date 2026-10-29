@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { Experience, PeriodPipe, SectionCopy } from '@portfolio/data';
+import { Component, inject, input } from '@angular/core';
+import { Experience, PeriodPipe, SectionCopy, UI_COPY } from '@portfolio/data';
 import { IconComponent, SectionComponent, TagListComponent, TimelineItemComponent } from '@portfolio/ui';
 
 @Component({
@@ -25,7 +25,7 @@ import { IconComponent, SectionComponent, TagListComponent, TimelineItemComponen
                   </li>
                 }
               </ul>
-              <ui-tag-list class="mt-6" size="sm" [tags]="job.stack" [label]="job.company + ' tech stack'" />
+              <ui-tag-list class="mt-6" size="sm" [tags]="job.stack" [label]="ui.techStack(job.company)" />
             </ui-timeline-item>
           </li>
         }
@@ -36,4 +36,6 @@ import { IconComponent, SectionComponent, TagListComponent, TimelineItemComponen
 export class ExperienceComponent {
   public readonly copy = input.required<SectionCopy>();
   public readonly items = input.required<readonly Experience[]>();
+
+  protected readonly ui = inject(UI_COPY);
 }

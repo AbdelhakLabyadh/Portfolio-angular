@@ -1,5 +1,5 @@
-import { Component, input } from '@angular/core';
-import { Profile, SectionCopy } from '@portfolio/data';
+import { Component, inject, input } from '@angular/core';
+import { Profile, SectionCopy, UI_COPY } from '@portfolio/data';
 import { CardComponent, SectionComponent } from '@portfolio/ui';
 
 @Component({
@@ -13,7 +13,7 @@ import { CardComponent, SectionComponent } from '@portfolio/ui';
             <p>{{ paragraph }}</p>
           }
         </div>
-        <ul class="grid grid-cols-2 gap-4 self-start" aria-label="Highlights">
+        <ul class="grid grid-cols-2 gap-4 self-start" [attr.aria-label]="ui.highlights">
           @for (fact of profile().facts; track fact.value) {
             <li>
               <ui-card padding="sm" class="h-full">
@@ -30,4 +30,6 @@ import { CardComponent, SectionComponent } from '@portfolio/ui';
 export class AboutComponent {
   public readonly copy = input.required<SectionCopy>();
   public readonly profile = input.required<Profile>();
+
+  protected readonly ui = inject(UI_COPY);
 }

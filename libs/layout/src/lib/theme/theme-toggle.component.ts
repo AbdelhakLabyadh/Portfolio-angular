@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+import { UI_COPY } from '@portfolio/data';
 import { ButtonDirective, IconComponent } from '@portfolio/ui';
 import { ThemeService } from './theme.service';
 
@@ -13,6 +14,10 @@ import { ThemeService } from './theme.service';
   `,
 })
 export class ThemeToggleComponent {
+  private readonly copy = inject(UI_COPY);
+
   protected readonly theme = inject(ThemeService);
-  protected readonly label = computed(() => (this.theme.isDark() ? 'Switch to light theme' : 'Switch to dark theme'));
+  protected readonly label = computed(() =>
+    this.theme.isDark() ? this.copy.switchToLightTheme : this.copy.switchToDarkTheme
+  );
 }

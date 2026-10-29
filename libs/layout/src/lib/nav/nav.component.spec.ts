@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { NavItem } from '@portfolio/data';
 import { axe } from 'jest-axe';
 import { NavComponent } from './nav.component';
@@ -9,6 +10,8 @@ const ITEMS: NavItem[] = [
 ];
 
 describe('NavComponent', () => {
+  beforeEach(() => TestBed.configureTestingModule({ providers: [provideRouter([])] }));
+
   async function render(activeId: string | null = null) {
     const fixture = TestBed.createComponent(NavComponent);
     fixture.componentRef.setInput('items', ITEMS);
@@ -17,10 +20,10 @@ describe('NavComponent', () => {
     return fixture;
   }
 
-  it('links to each section anchor', async () => {
+  it('links to each section anchor on the current page', async () => {
     const links = Array.from((await render()).nativeElement.querySelectorAll('a')) as HTMLAnchorElement[];
 
-    expect(links.map(link => link.getAttribute('href'))).toEqual(['#about', '#skills']);
+    expect(links.map(link => link.getAttribute('href'))).toEqual(['/#about', '/#skills']);
   });
 
   it('marks the active section with aria-current', async () => {

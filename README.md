@@ -34,7 +34,10 @@ Dependencies only flow one way, enforced by `@nx/enforce-module-boundaries`:
 
 ## Editing content
 
-All text lives in [`libs/portfolio-data/src/lib/portfolio.data.ts`](libs/portfolio-data/src/lib/portfolio.data.ts). Templates contain no hard-coded content.
+The site is available in English at `/` and in French at `/fr`; both pages are prerendered and the header has a language switcher. Templates contain no hard-coded content:
+
+- **Portfolio content**: English in [`portfolio.data.ts`](libs/portfolio-data/src/lib/portfolio.data.ts), French in [`portfolio.fr.ts`](libs/portfolio-data/src/lib/portfolio.fr.ts). Keep both in sync — a test checks that they have the same structure.
+- **Interface text** (buttons, labels, menu): [`ui-copy.ts`](libs/portfolio-data/src/lib/ui-copy.ts).
 
 - **CV**: replace `apps/portfolio/public/Abdelhak_Labyadh_CV.pdf`.
 - **Photo**: add an image to `apps/portfolio/public/` and set `profile.photoUrl` (for example `'profile.jpg'`). Without it the hero shows the initials.

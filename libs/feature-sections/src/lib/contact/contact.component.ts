@@ -1,5 +1,5 @@
-import { Component, computed, input } from '@angular/core';
-import { ContactLink, Profile, SectionCopy } from '@portfolio/data';
+import { Component, computed, inject, input } from '@angular/core';
+import { ContactLink, Profile, SectionCopy, UI_COPY } from '@portfolio/data';
 import { ButtonDirective, CardComponent, IconComponent, SectionComponent } from '@portfolio/ui';
 
 @Component({
@@ -39,12 +39,12 @@ import { ButtonDirective, CardComponent, IconComponent, SectionComponent } from 
         @if (email(); as mail) {
           <a uiButton [href]="mail.href">
             <ui-icon name="mail" [size]="18" />
-            Send me an email
+            {{ ui.sendEmail }}
           </a>
         }
         <a uiButton variant="secondary" [href]="profile().cvUrl" [attr.download]="profile().cvFileName">
           <ui-icon name="download" [size]="18" />
-          Download CV
+          {{ ui.downloadCv }}
         </a>
       </div>
     </ui-section>
@@ -55,6 +55,7 @@ export class ContactComponent {
   public readonly profile = input.required<Profile>();
   public readonly contacts = input.required<readonly ContactLink[]>();
 
+  protected readonly ui = inject(UI_COPY);
   protected readonly email = computed(() => this.contacts().find(({ kind }) => kind === 'mail'));
 
   protected isExternal({ href }: ContactLink): boolean {

@@ -1,3 +1,5 @@
+export type Locale = 'en' | 'fr';
+
 export type ContactKind = 'mail' | 'phone' | 'linkedin' | 'github' | 'map-pin';
 
 export interface ContactLink {
@@ -98,4 +100,30 @@ export interface Portfolio {
   education: Education[];
   certifications: Certification[];
   languages: string[];
+}
+
+export interface UiCopy {
+  skipToContent: string;
+  mainNavLabel: string;
+  mobileNavLabel: string;
+  openMenu: string;
+  closeMenu: string;
+  switchToLightTheme: string;
+  switchToDarkTheme: string;
+  languageLabel: string;
+  socialProfiles: string;
+  downloadCv: string;
+  getInTouch: string;
+  sendEmail: string;
+  highlights: string;
+  certificatesAndTraining: string;
+  languages: string;
+  techStack: (company: string) => string;
+  builtWith: string;
+}
+
+export interface LocaleOption {
+  id: Locale;
+  label: string;
+  path: string;
 }

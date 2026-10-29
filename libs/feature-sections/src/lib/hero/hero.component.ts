@@ -1,10 +1,11 @@
-import { Component, input } from '@angular/core';
-import { ContactLink, Profile } from '@portfolio/data';
+import { Component, inject, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { ContactLink, Profile, UI_COPY } from '@portfolio/data';
 import { AvatarComponent, ButtonDirective, IconComponent, IconLinksComponent } from '@portfolio/ui';
 
 @Component({
   selector: 'section-hero',
-  imports: [AvatarComponent, ButtonDirective, IconComponent, IconLinksComponent],
+  imports: [AvatarComponent, ButtonDirective, IconComponent, IconLinksComponent, RouterLink],
   host: { class: 'block' },
   template: `
     <section id="hero" aria-labelledby="hero-heading" class="relative isolate overflow-hidden">
@@ -32,13 +33,13 @@ import { AvatarComponent, ButtonDirective, IconComponent, IconLinksComponent } f
           <div class="mt-8 flex flex-wrap items-center gap-3">
             <a uiButton [href]="profile().cvUrl" [attr.download]="profile().cvFileName">
               <ui-icon name="download" [size]="18" />
-              Download CV
+              {{ ui.downloadCv }}
             </a>
-            <a uiButton variant="secondary" href="#contact">
-              Get in touch
+            <a uiButton variant="secondary" routerLink="." fragment="contact">
+              {{ ui.getInTouch }}
               <ui-icon name="arrow-right" [size]="18" />
             </a>
-            <ui-icon-links label="Social profiles" [links]="contacts()" [kinds]="['linkedin', 'github']" />
+            <ui-icon-links [label]="ui.socialProfiles" [links]="contacts()" [kinds]="['linkedin', 'github']" />
           </div>
         </div>
         <div class="hidden justify-self-center md:block">
@@ -56,4 +57,6 @@ import { AvatarComponent, ButtonDirective, IconComponent, IconLinksComponent } f
 export class HeroComponent {
   public readonly profile = input.required<Profile>();
   public readonly contacts = input.required<readonly ContactLink[]>();
+
+  protected readonly ui = inject(UI_COPY);
 }

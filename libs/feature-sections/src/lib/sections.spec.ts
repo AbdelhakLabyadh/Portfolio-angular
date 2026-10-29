@@ -1,6 +1,7 @@
 import { Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { portfolio } from '@portfolio/data';
+import { provideRouter } from '@angular/router';
+import { LOCALE, portfolio, portfolioFr, UI_COPY, uiCopy } from '@portfolio/data';
 import { axe } from 'jest-axe';
 import { AboutComponent } from './about/about.component';
 import { CertificationsComponent } from './certifications/certifications.component';
@@ -34,6 +35,8 @@ async function render(component: Type<unknown>, inputs: Record<string, unknown>)
 }
 
 describe('feature sections', () => {
+  beforeEach(() => TestBed.configureTestingModule({ providers: [provideRouter([])] }));
+
   it.each(CASES)('%s section has no accessibility violations', async (_, component, inputs) => {
     expect(await axe(await render(component, inputs))).toHaveNoViolations();
   });
@@ -72,5 +75,16 @@ describe('feature sections', () => {
 
     expect(mail?.getAttribute('target')).toBeNull();
     expect(github?.getAttribute('target')).toBe('_blank');
+  });
+
+  it('experience renders French copy and dates in the French locale', async () => {
+    TestBed.overrideProvider(LOCALE, { useValue: 'fr' });
+    TestBed.overrideProvider(UI_COPY, { useValue: uiCopy.fr });
+    const items = portfolioFr.experience.filter(({ featured }) => featured);
+    const element = await render(ExperienceComponent, { copy: portfolioFr.sections.experience, items });
+
+    expect(element.querySelector('h2')?.textContent).toContain('Expérience front-end');
+    expect(element.textContent).toContain("juil. 2025 – aujourd'hui");
+    expect(element.querySelector('[aria-label="Stack technique Sunrise"]')).not.toBeNull();
   });
 });
