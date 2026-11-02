@@ -1,9 +1,9 @@
 import { Portfolio } from './models';
-import { portfolio } from './portfolio.data';
+import { portfolioEn } from './portfolio.en';
 
 export const portfolioFr: Portfolio = {
   profile: {
-    ...portfolio.profile,
+    ...portfolioEn.profile,
     title: 'Développeur Front-End Angular',
     location: 'Lisbonne, Portugal',
     availability: 'Ouvert aux postes front-end au Portugal',
@@ -21,7 +21,7 @@ export const portfolioFr: Portfolio = {
       { value: '3', label: 'Langues de travail : EN, FR, AR' },
     ],
   },
-  contacts: portfolio.contacts.map(contact => {
+  contacts: portfolioEn.contacts.map(contact => {
     switch (contact.kind) {
       case 'mail':
         return { ...contact, label: 'E-mail' };

@@ -1,6 +1,6 @@
 import { Portfolio } from './models';
 
-export const portfolio: Portfolio = {
+export const portfolioEn: Portfolio = {
   profile: {
     name: 'Abdelhak Labyadh',
     initials: 'AL',
@@ -216,3 +216,5 @@ export const portfolio: Portfolio = {
   ],
   languages: ['Arabic', 'English', 'French'],
 };
+
+export const portfolio = portfolioEn;

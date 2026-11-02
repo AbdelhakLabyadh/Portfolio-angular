@@ -14,7 +14,7 @@ Personal portfolio of an Angular front-end developer based in Lisbon. It is a st
 
 ```
 apps/portfolio          App shell: composes layout + sections, SEO meta, prerendering
-libs/portfolio-data     @portfolio/data      Typed models and all content (portfolio.data.ts)
+libs/portfolio-data     @portfolio/data      Typed models and all content (portfolio.en.ts, portfolio.fr.ts)
 libs/ui                 @portfolio/ui        Presentational building blocks: section, card, tag-list,
                                              timeline-item, avatar, icon, icon-links, uiButton
 libs/layout             @portfolio/layout    Header, nav with scroll-spy, footer, theme toggle + services
@@ -36,7 +36,7 @@ Dependencies only flow one way, enforced by `@nx/enforce-module-boundaries`:
 
 The site is available in English at `/` and in French at `/fr`; both pages are prerendered and the header has a language switcher. Templates contain no hard-coded content:
 
-- **Portfolio content**: English in [`portfolio.data.ts`](libs/portfolio-data/src/lib/portfolio.data.ts), French in [`portfolio.fr.ts`](libs/portfolio-data/src/lib/portfolio.fr.ts). Keep both in sync — a test checks that they have the same structure.
+- **Portfolio content**: English in [`portfolio.en.ts`](libs/portfolio-data/src/lib/portfolio.en.ts), French in [`portfolio.fr.ts`](libs/portfolio-data/src/lib/portfolio.fr.ts). Keep both in sync — a test checks that they have the same structure.
 - **Interface text** (buttons, labels, menu): [`ui-copy.ts`](libs/portfolio-data/src/lib/ui-copy.ts).
 
 - **CV**: replace `apps/portfolio/public/Abdelhak_Labyadh_CV.pdf`.

@@ -1,10 +1,10 @@
 import { InjectionToken, Provider } from '@angular/core';
 import { Locale, NavItem, Portfolio, UiCopy } from './models';
-import { portfolio } from './portfolio.data';
+import { portfolioEn } from './portfolio.en';
 import { portfolioFr } from './portfolio.fr';
 import { uiCopy } from './ui-copy';
 
-export const portfolios: Record<Locale, Portfolio> = { en: portfolio, fr: portfolioFr };
+export const portfolios: Record<Locale, Portfolio> = { en: portfolioEn, fr: portfolioFr };
 
 export const LOCALE = new InjectionToken<Locale>('LOCALE', {
   providedIn: 'root',
@@ -13,7 +13,7 @@ export const LOCALE = new InjectionToken<Locale>('LOCALE', {
 
 export const PORTFOLIO = new InjectionToken<Portfolio>('PORTFOLIO', {
   providedIn: 'root',
-  factory: () => portfolio,
+  factory: () => portfolioEn,
 });
 
 export const UI_COPY = new InjectionToken<UiCopy>('UI_COPY', {

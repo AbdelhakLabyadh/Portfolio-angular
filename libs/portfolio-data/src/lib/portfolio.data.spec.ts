@@ -1,4 +1,4 @@
-import { portfolio } from './portfolio.data';
+import { portfolio } from './portfolio.en';
 import { portfolioFr } from './portfolio.fr';
 import { toNavItems } from './portfolio.token';
 import { uiCopy } from './ui-copy';
