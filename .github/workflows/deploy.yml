@@ -2,7 +2,7 @@ name: CI and deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
   workflow_dispatch:
 
@@ -47,12 +47,12 @@ jobs:
       - run: touch dist/apps/portfolio/browser/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         with:
           path: dist/apps/portfolio/browser
 
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     needs: ci
     runs-on: ubuntu-latest
     environment:

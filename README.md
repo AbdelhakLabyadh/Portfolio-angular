@@ -56,6 +56,6 @@ npx nx graph                # visualise the project graph
 
 ## Deployment
 
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) lints and tests affected projects, builds with the correct `--base-href` for the repository name, and deploys `dist/apps/portfolio/browser` to GitHub Pages on every push to `main`.
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) lints and tests affected projects, builds with the correct `--base-href` for the repository name, and deploys `dist/apps/portfolio/browser` to GitHub Pages on every push to `master`.
 
 To enable it, push the repository to GitHub and set **Settings → Pages → Source** to **GitHub Actions**.
